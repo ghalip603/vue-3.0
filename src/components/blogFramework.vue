@@ -8,8 +8,4 @@ export default {
 };
 </script>
 
-<style scoped>
-.blogBannerGradients {
-  width: 100%;
-}
-</style>
+<style scoped></style>
