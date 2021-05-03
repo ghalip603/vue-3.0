@@ -10,9 +10,10 @@ import ElementPlus from "element-plus";
 import "element-plus/lib/theme-chalk/index.css";
 import App from "./App.vue";
 import router from "./router";
+import axios from "axios";
 
 const app = createApp(App);
-app.use(router, ElementPlus);
+app.use(router, axios, ElementPlus);
 app.mount("#app");
 // 如果要使用.scss样式文件，则需要引入base.scss文件
 // import 'element-plus/packages/theme-chalk/src/base.scss'
@@ -101,7 +102,7 @@ import {
   ElMessage,
   ElMessageBox,
   ElNotification,
-} from 'element-plus';
+} from "element-plus";
 
 const components = [
   ElAlert,
@@ -182,7 +183,7 @@ const components = [
   ElTransfer,
   ElTree,
   ElUpload,
-]
+];
 
 const plugins = [
   ElInfiniteScroll,
@@ -190,13 +191,12 @@ const plugins = [
   ElMessage,
   ElMessageBox,
   ElNotification,
-]
+];
 
+components.forEach((component) => {
+  app.component(component.name, component);
+});
 
-components.forEach(component => {
-  app.component(component.name, component)
-})
-
-plugins.forEach(plugin => {
-  app.use(plugin)
-})
+plugins.forEach((plugin) => {
+  app.use(plugin);
+});

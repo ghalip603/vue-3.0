@@ -58,7 +58,6 @@
             </div>
           </footer>
         </el-drawer>
-
         <!--        <i @click="drawer" type="primary" class="el-icon-more"></i>-->
       </div>
     </div>

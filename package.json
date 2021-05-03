@@ -13,7 +13,6 @@
     "element-plus": "^1.0.2-beta.28",
     "vue": "^3.0.11",
     "vue-loader": "^15.9.6",
-    "vue-router": "^4.0.0-0",
     "vue-template-compiler": "^2.6.12"
   },
   "devDependencies": {
@@ -30,7 +29,8 @@
     "prettier": "^2.2.1",
     "sass": "^1.26.5",
     "sass-loader": "^8.0.2",
-    "vue-cli-plugin-element-plus": "^0.0.13"
+    "vue-cli-plugin-element-plus": "^0.0.13",
+    "vue-router": "^4.0.6"
   },
   "eslintConfig": {
     "root": true,
