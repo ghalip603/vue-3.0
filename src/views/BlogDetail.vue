@@ -1,22 +1,21 @@
 <template>
   <!--  <blogFramework> </blogFramework>-->
   <div class="wrapper">
-    <router-link v-for="item in items" :key="item.id" class="blog-item" :to="{name: 'BlogDetail', params: {id: item.id}}">
+    <div class="post" >
       <div class="title">{{ item.name }}</div>
-      <div class="time"> {{item.created_at}}</div>
-    </router-link>
+      <div class="time"> {{item.desciription}}</div>
+    </div>
   </div>
 </template>
 
 <script>
-// import blogFramework from "../components/blogFramework";
 
 import service from '@/utils/request'
 
 export default {
   data() {
     return {
-      items: []
+      item: {}
     }
   },
   name: "Blog",
@@ -24,7 +23,9 @@ export default {
     // blogFramework,
   },
   async mounted () {
-    this.items = await service.get('/blogs')
+    const blogId = this.$route.params.id
+    this.item = await service.get(`/Blogs/${blogId}`)
+    console.log(`mounted@BlogDetail:28`, this.item)
   }
 };
 </script>

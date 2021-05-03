@@ -68,7 +68,6 @@
 <script>
 import { ElInput } from "element-plus";
 import { ElDrawer } from "element-plus";
-import axios from "axios";
 export default {
   name: "App",
   components: {
@@ -81,9 +80,6 @@ export default {
     };
   },
   created() {
-    axios.get("http://localhost:1337/blog-content").then((response) => {
-      console.log(response);
-    });
   },
 };
 </script>
