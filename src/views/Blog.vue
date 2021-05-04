@@ -1,16 +1,10 @@
 <template>
   <!--  <blogFramework> </blogFramework>-->
   <div class="wrapper">
-    <router-link
-      v-for="item in items"
-      :key="item.id"
-      :src="url"
-      class="blog-item"
-      :to="{ name: 'BlogDetail', params: { id: item.id } }"
-    >
+    <router-link v-for="item in items" :key="item.id" class="blog-item" :to="{name: 'BlogDetail', params: {id: item.id}}">
       <div class="title">{{ item.name }}</div>
-      <div class="time">{{ item.created_at }}</div>
-      <div class="pictures"><img :src="url" alt="" /></div>
+      <img class="cover" :src="item.image"/>
+      <div class="time"> {{item.created_at}}</div>
     </router-link>
   </div>
 </template>
@@ -23,22 +17,26 @@ import service from "@/utils/request";
 export default {
   data() {
     return {
-      items: [],
-      url: "admin/plugins/upload/Wechat_IMG_13_5e2334246e.jpeg",
-    };
+      items: []
+    }
   },
-
   name: "Blog",
   components: {
     // blogFramework,
   },
+  async mounted () {
+    const baseUrl = 'http://localhost:1337'
+    this.items = await service.get('/blogs')
+    this.items = this.items.map(x=> {
+      x.image = baseUrl + x.pictures.url
+      return x
+    })
 
-  async mounted() {
-    this.items = await service.get("/blogs");
-    this.items = await service.get("/uploads/");
-  },
+  }
 };
 </script>
+
+
 
 <style scoped>
 .wrapper {
@@ -60,4 +58,9 @@ export default {
 .content {
   font-size: 18px;
 }
+.cover {
+  width: 200px;
+
+}
+
 </style>
