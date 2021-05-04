@@ -2,10 +2,10 @@ import axios from "axios";
 
 // create an axios instance
 const service = axios.create({
-  baseURL: 'http://localhost:1337', // url = base url + request url
+  baseURL: "http://localhost:1337", // url = base url + request url
   // withCredentials: true, // send cookies when cross-domain requests
-  timeout: 100000 // request timeout
-})
+  timeout: 100000, // request timeout
+});
 
 // response interceptor
 service.interceptors.response.use(
@@ -19,18 +19,18 @@ service.interceptors.response.use(
    * Here is just an example
    * You can also judge the status by HTTP Status Code
    */
-  response => {
-    const res = response.data
+  (response) => {
+    const res = response.data;
     // if the custom code is not 20000, it is judged as an error.
     if (response.status !== 200) {
-      return Promise.reject(new Error(res.message || 'Error'))
+      return Promise.reject(new Error(res.message || "Error"));
     } else {
-      return res
+      return res;
     }
   },
-  error => {
-    return Promise.reject(error)
+  (error) => {
+    return Promise.reject(error);
   }
-)
+);
 
-export default service
+export default service;

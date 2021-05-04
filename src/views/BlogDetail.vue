@@ -1,36 +1,33 @@
 <template>
   <!--  <blogFramework> </blogFramework>-->
   <div class="wrapper">
-    <div class="post" >
+    <div class="post">
       <div class="title">{{ item.name }}</div>
-      <div class="time"> {{item.desciription}}</div>
+      <div class="time">{{ item.desciription }}</div>
+      <div class="picture"><img :src="url" alt="" /></div>
     </div>
   </div>
 </template>
 
 <script>
-
-import service from '@/utils/request'
-
+import service from "@/utils/request";
 export default {
   data() {
     return {
-      item: {}
-    }
+      item: {},
+    };
   },
   name: "Blog",
   components: {
     // blogFramework,
   },
-  async mounted () {
-    const blogId = this.$route.params.id
-    this.item = await service.get(`/Blogs/${blogId}`)
-    console.log(`mounted@BlogDetail:28`, this.item)
-  }
+  async mounted() {
+    const blogId = this.$route.params.id;
+    this.item = await service.get(`/Blogs/${blogId}`);
+    console.log(`mounted@BlogDetail:28`, this.item);
+  },
 };
 </script>
-
-
 
 <style scoped>
 .wrapper {
@@ -52,5 +49,8 @@ export default {
 .content {
   font-size: 18px;
 }
-
+.pictures {
+  width: 100%;
+  height: 200px;
+}
 </style>
